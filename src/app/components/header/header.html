@@ -1,0 +1,25 @@
+<!-- This is a header component of the Pizza App contains home and cart -->
+<header class="app-header">
+  <div class="logo-title">
+    <span class="logo">🍕</span>
+    <h1 class="title">Victomort's Pizza Emporium</h1>
+  </div>
+
+  <nav class="nav-controls">
+
+    <button class="icon-button" (click)="goToHome()">
+      <span class="material-symbols-outlined">home</span>
+    </button>
+
+    <button class="icon-button cart-button" (click)="goToCart()">
+      <span class="material-symbols-outlined">shopping_cart</span>
+
+      @if (cartCount$ | async; as count) {
+        @if (count > 0) {
+          <span class="cart-badge">{{ count }}</span>
+        }
+      }
+    </button>
+
+  </nav>
+</header>

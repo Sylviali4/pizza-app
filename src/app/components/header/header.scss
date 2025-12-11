@@ -1,0 +1,83 @@
+/* src/app/components/header/header.scss */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ff9950; /* 披萨应用常见的暖色调 */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 20px;
+}
+
+/* 按钮基础样式 */
+.icon-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+/* Material Symbols 图标样式 */
+.material-symbols-outlined {
+  font-size: 28px; /* 调整图标大小 */
+  font-variation-settings:
+  'FILL' 1, /* 填充图标，使其更实心 */
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* 购物车徽章样式 */
+.cart-button {
+    padding-right: 15px; /* 为徽章腾出空间 */
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff9800; /* 突出的颜色 */
+    color: #333;
+    font-size: 0.7em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    line-height: 1;
+    min-width: 15px;
+    text-align: center;
+    transform: translate(50%, -50%);
+}
