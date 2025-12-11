@@ -31,23 +31,34 @@
 
 .nav-controls {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    align-items: center;
 }
 
-/* 按钮基础样式 */
+/* 按钮基础样式 - 白色圆形按钮 */
 .icon-button {
-    background: none;
-    border: none;
-    color: white;
+    background: white;
+    border: 3px solid white;
+    color: #ff9950;
     cursor: pointer;
     position: relative;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     align-items: center;
-    transition: opacity 0.2s;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 
     &:hover {
-        opacity: 0.8;
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: scale(0.95);
     }
 }
 
@@ -62,22 +73,19 @@
 }
 
 /* 购物车徽章样式 */
-.cart-button {
-    padding-right: 15px; /* 为徽章腾出空间 */
-}
-
 .cart-badge {
     position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #ff9800; /* 突出的颜色 */
-    color: #333;
-    font-size: 0.7em;
+    top: -5px;
+    right: -5px;
+    background-color: #d32f2f;
+    color: white;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 50%;
-    padding: 2px 6px;
+    padding: 4px 8px;
     line-height: 1;
-    min-width: 15px;
+    min-width: 20px;
     text-align: center;
-    transform: translate(50%, -50%);
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: '', component: Home, title: 'Pizza App | Home' },
 
     // menu customization pages
-    { path: 'customize/pizza', component: CustomizePizza, title: 'Pizza App | Customize Pizza' },
+    { path: 'customize/:id', component: CustomizePizza, title: 'Pizza App | Customize Pizza' },
     { path: 'drinks', component: Drinks, title: 'Pizza App | Drinks' },
     { path: 'sides', component: Sides, title: 'Pizza App | Sides' },
 
