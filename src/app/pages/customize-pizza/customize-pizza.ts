@@ -95,7 +95,8 @@ export class CustomizePizza implements OnInit {
       selectedSize: this.selectedSize,
       selectedCrust: this.selectedCrust,
       unitPrice: this.unitPrice,
-      totalPrice: this.subtotal
+      totalPrice: this.subtotal,
+      image: this.selectedPizza.image
     };
 
     this.cartService.addToCart(cartItem);

@@ -3,7 +3,7 @@
   <!-- Left side - More Flavors -->
   <aside class="side-options left-side">
     <div class="flavor-circles">
-      @for (pizza of smallPizzas.slice(0, 2); track pizza.name) {
+      @for (pizza of smallPizzas; track pizza.id) {
         <div class="small-pizza-wheel">
           @for (slice of pizza.slices; track slice.position) {
             <button class="mini-slice mini-{{slice.position}}"
@@ -67,19 +67,4 @@
   </aside>
 </div>
 
-<!-- Bottom - More Flavors -->
-<div class="bottom-flavors">
-  <!-- <p class="side-label">more flavor</p> -->
-  <div class="flavor-circles-bottom">
-    @for (pizza of smallPizzas.slice(2, 4); track pizza.name) {
-      <div class="small-pizza-wheel">
-        @for (slice of pizza.slices; track slice.position) {
-          <button class="mini-slice mini-{{slice.position}}"
-                  [style.background-image]="'url(' + slice.image + ')'"
-                  (click)="selectSlice(slice)"></button>
-        }
-        <span class="circle-label">{{ pizza.name }}</span>
-      </div>
-    }
-  </div>
-</div>
+

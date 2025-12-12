@@ -59,7 +59,8 @@ export class Drinks {
       quantity: this.quantity,
       selectedSize: this.selectedSize,
       unitPrice: this.unitPrice,
-      totalPrice: this.subtotal
+      totalPrice: this.subtotal,
+      image: this.selectedDrink.image
     };
 
     this.cartService.addToCart(cartItem);

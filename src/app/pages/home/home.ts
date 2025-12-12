@@ -21,7 +21,7 @@ export class Home {
   smallPizzas = [
     {
       id: 'pizza1',
-      // name: 'Cheese',
+      name: 'Mixed',
       slices: [
         { position: 'tl', image: '/images/bacon_lettecs.jpg', flavorId: 'bacon_lettuce' },
         { position: 'tr', image: '/images/chicken_ranch.jpg', flavorId: 'chicken_ranch' },
@@ -31,27 +31,7 @@ export class Home {
     },
     {
       id: 'pizza2',
-      // name: 'Veggie',
-      slices: [
-        { position: 'tl', image: '/images/cheese_pizza.jpg', flavorId: 'cheese' },
-        { position: 'tr', image: '/images/steak.jpg', flavorId: 'steak' },
-        { position: 'bl', image: '/images/durian.jpg', flavorId: 'durian' },
-        { position: 'br', image: '/images/mushroom.jpg', flavorId: 'mushroom' }
-      ]
-    },
-    {
-      id: 'pizza3',
-      name: 'Bacon',
-      slices: [
-        { position: 'tl', image: '/images/bacon_lettecs.jpg', flavorId: 'bacon_lettuce' },
-        { position: 'tr', image: '/images/chicken_ranch.jpg', flavorId: 'chicken_ranch' },
-        { position: 'bl', image: '/images/veggie.jpg', flavorId: 'veggie' },
-        { position: 'br', image: '/images/pepper.jpg', flavorId: 'pepper' }
-      ]
-    },
-    {
-      id: 'pizza4',
-      name: 'Mushroom',
+      name: 'Special',
       slices: [
         { position: 'tl', image: '/images/cheese_pizza.jpg', flavorId: 'cheese' },
         { position: 'tr', image: '/images/steak.jpg', flavorId: 'steak' },
