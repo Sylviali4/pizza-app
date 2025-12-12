@@ -32,10 +32,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .garlic-bread {
+  // photo styling for real images
+  .side-photo {
     width: 100%;
-    max-width: 300px;
+    max-width: 600px;
     height: auto;
+    border-radius: 8px;
+    object-fit: contain;
   }
 }
 

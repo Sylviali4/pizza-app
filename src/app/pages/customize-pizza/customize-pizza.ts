@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../cart';
 import { CartItem } from '../../models/menu.model';
 
+// SLO Q1 - clean code with good indentation, naming, and comments
 interface PizzaOption {
   id: string;
   name: string;
@@ -57,6 +58,28 @@ export class CustomizePizza implements OnInit {
     { value: 'thick', label: 'Thick (+$1)', price: 1 }
   ];
 
+  // SLO J7 - closure
+  /**
+   * J7: Closure - creates a price calculator that remembers the pizza option
+   * 闭包示例：创建一个记住特定pizza选项的价格计算器
+   * This demonstrates how closures can encapsulate state and create specialized functions
+   */
+  createPriceCalculator() {
+    // The outer function captures the current selectedPizza in its scope
+    const basePizza = this.selectedPizza;
+    const sizeOpts = this.sizeOptions;
+    const crustOpts = this.crustOptions;
+
+    // J7: This inner function is a closure - it "closes over" the variables above
+    // 这个内部函数就是闭包 - 它"封闭"了上面的变量，即使外部函数已经返回，这些变量仍然可以访问
+    return (size: string, crust: string, qty: number) => {
+      const sizePrice = sizeOpts.find(s => s.value === size)?.price || 0;
+      const crustPrice = crustOpts.find(c => c.value === crust)?.price || 0;
+      return (basePizza.basePrice + sizePrice + crustPrice) * qty;
+    };
+  }
+
+  // 页面加载时从URL参数获取pizza ID
   ngOnInit() {
     const pizzaId = this.route.snapshot.paramMap.get('id');
     if (pizzaId) {
@@ -68,6 +91,8 @@ export class CustomizePizza implements OnInit {
     }
   }
 
+  // SLO J5Q - short-circuit && and ternary operator
+  // 计算单价：基础价格加上尺寸和饼皮的额外费用
   get unitPrice(): number {
     const sizePrice = this.sizeOptions.find(s => s.value === this.selectedSize)?.price || 0;
     const crustPrice = this.crustOptions.find(c => c.value === this.selectedCrust)?.price || 0;
@@ -78,6 +103,7 @@ export class CustomizePizza implements OnInit {
     return this.unitPrice * this.quantity;
   }
 
+  // 根据选择的ID更新pizza对象
   onPizzaChange() {
     const pizza = this.pizzaOptions.find(p => p.id === this.selectedPizzaId);
     if (pizza) {
@@ -86,16 +112,21 @@ export class CustomizePizza implements OnInit {
   }
 
   addToCart() {
+    // J7: Use the closure to calculate price - demonstrates practical closure usage
+    // 使用闭包计算价格 - 展示闭包的实际应用
+    const priceCalculator = this.createPriceCalculator();
+    const calculatedTotal = priceCalculator(this.selectedSize, this.selectedCrust, this.quantity);
+
     const cartItem: CartItem = {
       itemId: this.selectedPizza.id,
-      tempId: '', // CartService will generate a temporary and unique ID
+      tempId: '', // cart service makes a unique id for this
       name: this.selectedPizza.name,
       type: 'pizza',
       quantity: this.quantity,
       selectedSize: this.selectedSize,
       selectedCrust: this.selectedCrust,
       unitPrice: this.unitPrice,
-      totalPrice: this.subtotal,
+      totalPrice: calculatedTotal, // using closure's calculated price
       image: this.selectedPizza.image
     };
 

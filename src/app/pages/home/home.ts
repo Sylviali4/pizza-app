@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home {
-  // Main pizza flavors (显示在中间大圆形的4个部分)
+  // the 4 main pizzas in the big wheel
   mainFlavors = [
     { id: 'hawaiian', name: 'Hawaiian', image: 'images/pizza_tl.png', position: 'top-left' },
     { id: 'meatlovers', name: 'Meatlovers', image: 'images/pizza_tr.png', position: 'top-right' },
@@ -17,7 +17,7 @@ export class Home {
     { id: 'margarita', name: 'Margarita', image: 'images/pizza_br.png', position: 'bottom-right' }
   ];
 
-  // Small pizza wheels (每个用4个不同口味拼成)
+  // 旁边的小pizza，每个有4片不同口味
   smallPizzas = [
     {
       id: 'pizza1',
@@ -198,27 +198,27 @@ export class Home {
 
   constructor(private router: Router) {}
 
-  // 点击主披萨区域的某个口味
+  // when you click a main pizza flavor
   selectMainFlavor(flavor: any) {
     this.router.navigate(['/customize', flavor.id]);
   }
 
-  // 点击侧边的更多口味
+  // clicking on the side pizzas
   selectMoreFlavor(flavor: any) {
     this.router.navigate(['/customize', flavor.id]);
   }
 
-  // 点击小pizza的单个切片
+  // 点击小pizza的单个切片时导航到对应口味
   selectSlice(slice: any) {
     this.router.navigate(['/customize', slice.flavorId]);
   }
 
-  // 导航到 Sides 页面
+  // go to sides page
   goToSides() {
     this.router.navigate(['/sides']);
   }
 
-  // 导航到 Drinks 页面
+  // go to drinks page
   goToDrinks() {
     this.router.navigate(['/drinks']);
   }

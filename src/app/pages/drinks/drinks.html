@@ -1,10 +1,9 @@
-<!-- This is a drinks page of the Pizza App -->
-<!-- Drinks Page -->
+<!-- drinks selection page -->
 <div class="drinks-container">
   <h1 class="page-title">Drink Page</h1>
 
   <div class="drinks-content">
-    <!-- Drink Preview -->
+    <!-- shows the drink image -->
     <div class="preview-section">
       <div class="drink-image">
         <img [src]="selectedDrink.image" [alt]="selectedDrink.name" class="drink-photo" />
@@ -12,10 +11,10 @@
       <p class="drink-label">Choose your drink</p>
     </div>
 
-    <!-- Drink Selection Form -->
+    <!-- form where you pick the drink -->
     <div class="form-section">
       <form class="builder-form">
-        <!-- Drink Type Selection -->
+        <!-- buttons for different drinks -->
         <div class="drink-types">
           @for (drink of drinkOptions; track drink.id) {
             <button 
@@ -28,7 +27,7 @@
           }
         </div>
 
-        <!-- Size Selection -->
+        <!-- pick small medium or large -->
         <fieldset class="form-group">
           <legend>Size</legend>
           <div class="radio-group">
@@ -46,7 +45,7 @@
           </div>
         </fieldset>
 
-        <!-- Quantity -->
+        <!-- how many you want -->
         <div class="form-group quantity-group">
           <label for="qty">Quantity:</label>
           <input 
@@ -59,7 +58,7 @@
           />
         </div>
 
-        <!-- Price Display -->
+        <!-- shows the total -->
         <div class="price-box">
           <div class="price-row">
             <span>Unit: ${{ unitPrice.toFixed(2) }}</span>
@@ -69,7 +68,7 @@
           </div>
         </div>
 
-        <!-- Actions -->
+        <!-- add to cart or reset buttons -->
         <div class="actions">
           <button type="button" class="btn btn-primary" (click)="addToCart()">
             Add to Cart

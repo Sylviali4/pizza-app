@@ -16,7 +16,7 @@ export class OrderSuccessComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  // J4Q: get order ID from route parameters and store it in a public property
+  // grab the order id from the url
   public orderId: string | null = null;
 
   ngOnInit(): void {

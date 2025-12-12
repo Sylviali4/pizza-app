@@ -1,50 +1,20 @@
-<!-- This is a sides page of the Pizza App -->
-<!-- Sides Page -->
+<!-- page for ordering sides -->
 <div class="sides-container">
   <h1 class="page-title">Sides Page</h1>
 
   <div class="sides-content">
-    <!-- Side Preview -->
+    <!-- image of the selected side -->
     <div class="preview-section">
       <div class="side-image">
-        <svg viewBox="0 0 300 200" class="garlic-bread">
-          <!-- First breadstick -->
-          <ellipse cx="150" cy="60" rx="120" ry="25" fill="#D4A574" stroke="#8B6F47" stroke-width="2"/>
-          <ellipse cx="150" cy="60" rx="115" ry="22" fill="#E8C99F"/>
-          <!-- Herbs on first stick -->
-          <circle cx="120" cy="55" r="2" fill="#2D5016"/>
-          <circle cx="145" cy="62" r="2" fill="#2D5016"/>
-          <circle cx="170" cy="58" r="2" fill="#2D5016"/>
-          <circle cx="135" cy="65" r="2" fill="#2D5016"/>
-          <circle cx="160" cy="54" r="2" fill="2D5016"/>
-          
-          <!-- Second breadstick -->
-          <ellipse cx="150" cy="105" rx="120" ry="25" fill="#D4A574" stroke="#8B6F47" stroke-width="2"/>
-          <ellipse cx="150" cy="105" rx="115" ry="22" fill="#E8C99F"/>
-          <!-- Herbs on second stick -->
-          <circle cx="125" cy="100" r="2" fill="#2D5016"/>
-          <circle cx="150" cy="107" r="2" fill="#2D5016"/>
-          <circle cx="175" cy="103" r="2" fill="#2D5016"/>
-          <circle cx="140" cy="110" r="2" fill="#2D5016"/>
-          <circle cx="165" cy="99" r="2" fill="#2D5016"/>
-          
-          <!-- Third breadstick -->
-          <ellipse cx="150" cy="150" rx="120" ry="25" fill="#D4A574" stroke="#8B6F47" stroke-width="2"/>
-          <ellipse cx="150" cy="150" rx="115" ry="22" fill="#E8C99F"/>
-          <!-- Herbs on third stick -->
-          <circle cx="130" cy="145" r="2" fill="#2D5016"/>
-          <circle cx="155" cy="152" r="2" fill="#2D5016"/>
-          <circle cx="180" cy="148" r="2" fill="#2D5016"/>
-          <circle cx="145" cy="155" r="2" fill="#2D5016"/>
-          <circle cx="170" cy="144" r="2" fill="#2D5016"/>
-        </svg>
+        <img [src]="selectedSide.image" [alt]="selectedSide.name" class="side-photo" />
       </div>
     </div>
 
-    <!-- Side Selection Form -->
+    <!-- form to choose your side -->
     <div class="form-section">
+
       <form class="builder-form">
-        <!-- Side Type Selection -->
+        <!-- buttons for garlic bread, salad, wings -->
         <div class="side-types">
           @for (side of sideOptions; track side.id) {
             <button 
@@ -57,7 +27,7 @@
           }
         </div>
 
-        <!-- Size Selection -->
+        <!-- size options -->
         <fieldset class="form-group">
           <legend>Size</legend>
           <div class="radio-group">
@@ -75,7 +45,7 @@
           </div>
         </fieldset>
 
-        <!-- Quantity -->
+        <!-- quantity input -->
         <div class="form-group quantity-group">
           <label for="qty">Quantity:</label>
           <input 
@@ -88,7 +58,7 @@
           />
         </div>
 
-        <!-- Price Display -->
+        <!-- price calculation -->
         <div class="price-box">
           <div class="price-row">
             <span>Unit: ${{ unitPrice.toFixed(2) }}</span>
@@ -98,7 +68,7 @@
           </div>
         </div>
 
-        <!-- Actions -->
+        <!-- buttons for add/reset -->
         <div class="actions">
           <button type="button" class="btn btn-primary" (click)="addToCart()">
             Add to Cart

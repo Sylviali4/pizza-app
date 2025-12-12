@@ -1,4 +1,5 @@
-// Home Layout with Side Panels
+// SLO C5 - styling for user experience
+// main layout for home page
 .home-layout {
   display: flex;
   align-items: center;
@@ -10,7 +11,7 @@
   min-height: calc(100vh - 150px);
 }
 
-// Side Options (Left & Right)
+// left and right side panels
 .side-options {
   display: flex;
   flex-direction: column;
@@ -31,7 +32,7 @@
   }
 }
 
-// Small Pizza Wheels (4-slice mini pizzas)
+// the little pizzas on the sides
 .small-pizza-wheel {
   width: 180px;
   height: 180px;
@@ -55,7 +56,7 @@
   }
 }
 
-// Mini slices (4 quadrants)
+// 小pizza的每个切片，用绝对定位分成四块
 .mini-slice {
   position: absolute;
   width: 50%;
@@ -77,6 +78,7 @@
   }
 }
 
+// 左上角切片，transform-origin设置在右下角
 .mini-slice.mini-tl {
   left: 0;
   top: 0;
@@ -105,7 +107,7 @@
   transform-origin: top left;
 }
 
-// Menu Options (Side & Drink)
+// side and drink buttons
 .menu-option {
   display: flex;
   flex-direction: column;
@@ -148,7 +150,7 @@
   }
 }
 
-// Bottom Flavors Section
+// extra pizzas at the bottom
 .bottom-flavors {
   display: flex;
   flex-direction: column;
@@ -171,7 +173,7 @@
   }
 }
 
-// Pizza Wheel Landing Page (from Assignment5)
+// the big pizza wheel in center
 .wheel-landing {
   display: flex;
   justify-content: center;
@@ -189,7 +191,7 @@
   user-select: none;
 }
 
-// 4 slices with different pizza backgrounds
+// each slice of the main pizza
 .slice {
   position: absolute;
   width: 50%;
@@ -219,7 +221,7 @@
 .slice.bl .slice-label { left: 62%; top: 38%; }
 .slice.br .slice-label { left: 38%; top: 38%; }
 
-// Background images for each quadrant
+// different image for each slice
 .slice.tl {
   left: 0;
   top: 0;
@@ -261,7 +263,7 @@
   max-width: 500px;
 }
 
-// Hover/Focus effects
+// what happens when you hover
 .slice:hover,
 .slice:focus-visible {
   transform: scale(1.06);
@@ -754,7 +756,7 @@
   }
 }
 
-// Responsive Design
+// mobile view
 @media (max-width: 768px) {
   .hero-section {
     padding: 40px 20px;

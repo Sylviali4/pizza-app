@@ -22,6 +22,7 @@ export class Drinks {
   private router = inject(Router);
   public cartService = inject(CartService);
 
+  // 饮料选项数组，包含ID、名称、价格和图片路径
   drinkOptions: DrinkOption[] = [
     { id: 'coca-cola', name: 'Coca-Cola Classic', basePrice: 2.50, image: '/images/cocacola.jpg' },
     { id: 'sprite', name: 'Sprite', basePrice: 2.50, image: '/images/sprite.jpg' },
@@ -53,7 +54,7 @@ export class Drinks {
   addToCart() {
     const cartItem: CartItem = {
       itemId: this.selectedDrink.id,
-      tempId: '', // CartService will generate a temporary ID
+      tempId: '', // gets a unique id from cart service
       name: this.selectedDrink.name,
       type: 'drink',
       quantity: this.quantity,

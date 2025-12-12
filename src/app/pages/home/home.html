@@ -1,6 +1,7 @@
-<!-- Home Page - Pizza Wheel with Side Options -->
+<!-- SLO H2 - semantic HTML -->
+<!-- main landing page with the pizza wheel -->
 <div class="home-layout">
-  <!-- Left side - More Flavors -->
+  <!-- left side has extra pizza options -->
   <aside class="side-options left-side">
     <div class="flavor-circles">
       @for (pizza of smallPizzas; track pizza.id) {
@@ -16,10 +17,10 @@
     </div>
   </aside>
 
-  <!-- Center - Main Pizza Wheel -->
+  <!-- big pizza wheel in the middle -->
   <main class="wheel-landing">
     <div class="wheel" role="group" aria-label="Pizza types">
-      <!-- 4 slices pizza with different background images -->
+      <!-- split into 4 quarters, each one is a different flavor -->
       <button class="slice tl"
               (click)="selectMainFlavor(mainFlavors[0])"
               [attr.aria-label]="'Choose ' + mainFlavors[0].name">
@@ -47,7 +48,7 @@
     </div>
   </main>
 
-  <!-- Right side - Sides & Drinks -->
+  <!-- sides and drinks buttons on the right -->
   <aside class="side-options right-side">
     <button class="menu-option" (click)="goToSides()" aria-label="Choose Sides">
       <div class="option-icon">🍟</div>

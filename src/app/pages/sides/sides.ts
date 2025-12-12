@@ -25,7 +25,7 @@ export class Sides {
   sideOptions: SideOption[] = [
     { id: 'garlic-bread', name: 'garlic bread', basePrice: 5.00, image: '/images/garlic_bread.jpg' },
     { id: 'caesar-salad', name: 'Caesar salad', basePrice: 6.00, image: '/images/caesar_salad.jpg' },
-    { id: 'chicken-wings', name: 'chicken wings', basePrice: 8.00, image: '/images/chicken_wings.jpg' }
+    { id: 'chicken-wings', name: 'chicken wings', basePrice: 8.00, image: '/images/chiken_wing.jpg' }
   ];
 
   selectedSide: SideOption = this.sideOptions[0];
@@ -50,7 +50,7 @@ export class Sides {
   addToCart() {
     const cartItem: CartItem = {
       itemId: this.selectedSide.id,
-      tempId: '', // CartService will generate a temporary ID
+      tempId: '', // cart service gives it an id
       name: this.selectedSide.name,
       type: 'side',
       quantity: this.quantity,

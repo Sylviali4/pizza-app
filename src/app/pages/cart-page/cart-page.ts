@@ -6,6 +6,7 @@ import { ConfirmOrderModal } from '../../components/confirm-order-modal/confirm-
 import { OrderService } from '../../order';
 import { take, firstValueFrom } from 'rxjs';
 
+// SLO AN2 - modular Angular components for reusability
 @Component({
   selector: 'app-cart-page',
   standalone: true,
@@ -18,14 +19,14 @@ export class CartPageComponent {
 
   private router = inject(Router);
   public cartService = inject(CartService);
-  private orderService = inject(OrderService); // Inject OrderService
+  private orderService = inject(OrderService);
 
-  // Subscribe to cart data stream and total price
+  // 从服务获取购物车Observable流
   public cartItems$ = this.cartService.cartItems$;
   public totalPrice$ = this.cartService.totalPrice$;
 
-  // Control modal display state
-  public isModalOpen: boolean = false;
+  // for showing/hiding the confirmation modal
+  isModalOpen = false;
 
   constructor() { }
 

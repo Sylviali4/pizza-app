@@ -18,6 +18,7 @@ export class OrderService {
 
   constructor() { }
 
+  // SLO AJ2Q - async/Promises
   /**
    * 提交订单到 Firestore (AJ2Q: 使用 async/await 处理 Promises)
    * @param orderData 包含 items 和 totalPrice 的订单数据

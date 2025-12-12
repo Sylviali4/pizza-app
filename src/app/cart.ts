@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem } from './models/menu.model';
 import { map } from 'rxjs/operators';
 
+// SLO AN9 - separation of view (HTML) from logic and data services
 // P5: 用于 localStorage 的键
 const CART_STORAGE_KEY = 'pizza_cart';
 
@@ -18,6 +19,7 @@ export class CartService {
   // 暴露给组件订阅的 Observable
   public cartItems$: Observable<CartItem[]> = this.cartItemsSubject.asObservable();
 
+  // SLO J4Q - map/filter/reduce
   // J4Q: 计算购物车总价的 Observable
   public totalPrice$: Observable<number> = this.cartItems$.pipe(
     map(items =>
@@ -37,6 +39,7 @@ export class CartService {
     this.loadCartFromLocalStorage();
   }
 
+  // SLO P1 - data persistence with localStorage
   /**
    * P5: 从 localStorage 加载购物车状态
    */

@@ -1,3 +1,4 @@
+// SLO T2Q - TypeScript type annotations
 //This file 定义了披萨、饮料、配菜以及购物车项目 (CartItem) 的数据结构，这样 CartService 和 OrderService 才知道如何处理数据。
 
 // 基础选项结构 (大小/外壳等)

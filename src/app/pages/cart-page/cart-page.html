@@ -2,6 +2,7 @@
 <div class="cart-container">
   <h2>Your Cart</h2>
 
+  <!-- SLO AN4 - @if and @for directives -->
   @if (cartItems$ | async; as items) {
 
     @if (items.length === 0) {
