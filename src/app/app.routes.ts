@@ -4,7 +4,7 @@ import { CustomizePizza } from './pages/customize-pizza/customize-pizza';
 import { Drinks } from './pages/drinks/drinks';
 import { Sides } from './pages/sides/sides';
 import { CartPageComponent } from './pages/cart-page/cart-page';
-import { OrderSuccess } from './pages/order-success/order-success';
+import { OrderSuccessComponent } from './pages/order-success/order-success';
 
 export const routes: Routes = [
     // home
@@ -17,7 +17,7 @@ export const routes: Routes = [
 
     // cart and order success
     { path: 'cart', component: CartPageComponent, title: 'Pizza App | Cart' },
-    { path: 'order/success', component: OrderSuccess, title: 'Pizza App | Order Success' },
+    { path: 'order/success', component: OrderSuccessComponent, title: 'Pizza App | Order Success' },
 
     // default redirect to home page
     { path: '**', redirectTo: '', pathMatch: 'full' }

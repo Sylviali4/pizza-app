@@ -1,73 +1,71 @@
-<!-- This is a customize pizza page of the Pizza App -->
 <div class="customize-container">
   <h1 class="page-title">Customization Pizza Page</h1>
 
   <div class="customize-content">
-    <!-- Pizza Preview -->
     <div class="preview-section">
       <img [src]="selectedPizza.image" [alt]="selectedPizza.name" class="pizza-preview" />
       <p class="pizza-description">{{ selectedPizza.description }}</p>
     </div>
 
-    <!-- Customization Form -->
     <div class="form-section">
       <form class="builder-form">
-        <!-- Pizza Type -->
         <div class="form-group">
           <label for="pizza">Pizza Type:</label>
           <select id="pizza" [(ngModel)]="selectedPizza.id" (change)="onPizzaChange($event)" name="pizzaType">
-            <option *ngFor="let pizza of pizzaOptions" [value]="pizza.id">
-              {{ pizza.name }}
-            </option>
+            @for (pizza of pizzaOptions; track pizza.id) {
+              <option [value]="pizza.id">
+                {{ pizza.name }}
+              </option>
+            }
           </select>
         </div>
 
-        <!-- Size -->
         <fieldset class="form-group">
           <legend>Size:</legend>
           <div class="radio-group">
-            <label *ngFor="let size of sizeOptions">
-              <input 
-                type="radio" 
-                name="size" 
-                [value]="size.value" 
-                [(ngModel)]="selectedSize"
-              />
-              {{ size.label }}
-            </label>
+            @for (size of sizeOptions; track size.value) {
+              <label>
+                <input
+                  type="radio"
+                  name="size"
+                  [value]="size.value"
+                  [(ngModel)]="selectedSize"
+                />
+                {{ size.label }}
+              </label>
+            }
           </div>
         </fieldset>
 
-        <!-- Crust -->
         <fieldset class="form-group">
           <legend>Crust:</legend>
           <div class="radio-group">
-            <label *ngFor="let crust of crustOptions">
-              <input 
-                type="radio" 
-                name="crust" 
-                [value]="crust.value" 
-                [(ngModel)]="selectedCrust"
-              />
-              {{ crust.label }}
-            </label>
+            @for (crust of crustOptions; track crust.value) {
+              <label>
+                <input
+                  type="radio"
+                  name="crust"
+                  [value]="crust.value"
+                  [(ngModel)]="selectedCrust"
+                />
+                {{ crust.label }}
+              </label>
+            }
           </div>
         </fieldset>
 
-        <!-- Quantity -->
         <div class="form-group">
           <label for="qty">Quantity:</label>
-          <input 
-            type="number" 
-            id="qty" 
-            name="quantity" 
-            [(ngModel)]="quantity" 
-            min="1" 
+          <input
+            type="number"
+            id="qty"
+            name="quantity"
+            [(ngModel)]="quantity"
+            min="1"
             max="10"
           />
         </div>
 
-        <!-- Price Display -->
         <div class="price-box">
           <div class="price-row">
             <span>Unit Price:</span>
@@ -79,7 +77,6 @@
           </div>
         </div>
 
-        <!-- Actions -->
         <div class="actions">
           <button type="button" class="btn btn-primary" (click)="addToCart()">
             Add to Cart

@@ -1,7 +1,9 @@
+@use 'sass:color';
+
 /* src/app/pages/cart-page/cart-page.component.scss */
 
-$primary-color: #ff5722; // 披萨主色调 (Checkout 按钮)
-$secondary-color: #f4f4f4; // 背景色
+$primary-color: #ff5722;
+$secondary-color: #f4f4f4; // Background color for empty cart message
 $border-color: #ddd;
 
 .cart-container {
@@ -39,7 +41,7 @@ h2 {
         cursor: pointer;
         transition: background-color 0.2s;
         &:hover {
-            background-color: darken($primary-color, 10%);
+            background-color: color.mix($primary-color, black, 90%);
         }
     }
 }
@@ -100,7 +102,7 @@ h2 {
 .item-price {
     font-weight: bold;
     color: #333;
-    min-width: 60px; /* 确保价格位置稳定 */
+    min-width: 60px; /* Ensure price position is stable */
     text-align: right;
 }
 
@@ -155,7 +157,7 @@ h2 {
     background-color: #ccc;
     color: #333;
     &:hover {
-        background-color: darken(#ccc, 10%);
+        background-color: color.mix(#ccc, black, 90%);
     }
 }
 
@@ -163,6 +165,6 @@ h2 {
     background-color: $primary-color;
     color: white;
     &:hover {
-        background-color: darken($primary-color, 10%);
+        background-color: color.mix($primary-color, black, 90%);
     }
 }

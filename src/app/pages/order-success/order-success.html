@@ -1,3 +1,22 @@
 <!-- This is an order success page of the Pizza App -->
 
-<p>order-success works!</p>
+<div class="success-container">
+  <div class="success-card">
+
+    <button class="icon-button home-button" (click)="goToHome()">
+        <span class="material-symbols-outlined">home</span>
+    </button>
+
+    <div class="message-content">
+      <h1>Thanks for Your Order</h1>
+      <p class="confirmation">Your order has been confirmed.</p>
+
+      @if (orderId) {
+        <p class="order-id">Order ID: <strong>{{ orderId }}</strong></p>
+      }
+
+    </div>
+
+    <div class="food-pattern-bg"></div>
+  </div>
+</div>

@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common'; // 导入管道
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from '../../cart';
-import { CartItem } from '../../models/menu.model';
-import { ConfirmOrderModal } from '../../components/confirm-order-modal/confirm-order-modal'; // 导入模态框组件
-import { OrderService } from '../../order'; // 导入 OrderService
-import { take } from 'rxjs'; // 导入 take 操作符
+import { ConfirmOrderModal } from '../../components/confirm-order-modal/confirm-order-modal';
+import { OrderService } from '../../order';
+import { take, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  // 导入所需的模块和组件
+  // Import required modules and components
   imports: [CommonModule, ConfirmOrderModal, DecimalPipe],
   templateUrl: './cart-page.html',
   styleUrl: './cart-page.scss'
@@ -19,46 +18,46 @@ export class CartPageComponent {
 
   private router = inject(Router);
   public cartService = inject(CartService);
-  private orderService = inject(OrderService); // 注入 OrderService
+  private orderService = inject(OrderService); // Inject OrderService
 
-  // 订阅购物车数据流和总价
+  // Subscribe to cart data stream and total price
   public cartItems$ = this.cartService.cartItems$;
   public totalPrice$ = this.cartService.totalPrice$;
 
-  // 控制模态框的显示状态
+  // Control modal display state
   public isModalOpen: boolean = false;
 
   constructor() { }
 
-  // 导航到主页
+  // Navigate to home page
   goToHome(): void {
     this.router.navigate(['/']);
   }
 
-  // 从购物车移除项目
+  // Remove item from cart
   removeItem(tempId: string): void {
     this.cartService.removeItem(tempId);
   }
 
-  // 清空购物车
+  // Clear cart
   clearCart(): void {
     this.cartService.clearCart();
   }
 
-  // 打开确认订单模态框
+  // Open confirm order modal
   openCheckoutModal(): void {
     this.isModalOpen = true;
   }
 
-  // --- 订单提交逻辑 (核心) ---
+  // --- Order Submission ---
 
   /**
-   * 提交订单并处理结果 (AJ2Q: Promises, 核心的 Firestore 测试点)
+   * Submit order and handle result (AJ2Q: Promises, core Firestore test point)
    */
   async confirmOrder(): Promise<void> {
-    // 使用 take(1).toPromise() 获取当前的 totalPrice，确保只取一个值后完成
-    const totalPrice = await this.totalPrice$.pipe(take(1)).toPromise();
-    const cartItems = this.cartService.getCurrentCart(); // 从 BehaviorSubject 获取最新值
+    // Use firstValueFrom to get current totalPrice, replacing deprecated toPromise()
+    const totalPrice = await firstValueFrom(this.totalPrice$.pipe(take(1)));
+    const cartItems = this.cartService.getCurrentCart(); // Get latest value from BehaviorSubject
 
     if (cartItems.length === 0 || !totalPrice) {
         console.warn('Cart is empty, cannot checkout.');
@@ -67,27 +66,27 @@ export class CartPageComponent {
     }
 
     try {
-      // 调用 OrderService 提交到 Firestore
+      // Call OrderService to submit to Firestore
       const orderId = await this.orderService.submitOrder({
           items: cartItems,
           totalPrice: totalPrice
       });
 
-      // 提交成功后：
-      this.cartService.clearCart(); // 清空本地购物车
-      this.isModalOpen = false;     // 关闭模态框
+      // On successful submission:
+      this.cartService.clearCart(); // Clear local cart
+      this.isModalOpen = false;     // Close modal
 
-      // 跳转到成功页面
+      // Navigate to success page
       this.router.navigate(['/order/success'], { queryParams: { id: orderId } });
 
     } catch (error) {
       console.error('Order submission failed:', error);
-      // TODO: 显示错误消息给用户
+      // TODO: Show error message to user
       this.isModalOpen = false;
     }
   }
 
-  // 取消订单/关闭模态框
+  // Cancel order / Close modal
   cancelOrder(): void {
     this.isModalOpen = false;
   }

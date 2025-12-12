@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../../cart';
+import { CartItem } from '../../models/menu.model';
 
 interface SideOption {
   id: string;
@@ -46,7 +47,20 @@ export class Sides {
   }
 
   addToCart() {
-    alert(`Added ${this.quantity} ${this.selectedSide.name} to cart!`);
+    const cartItem: CartItem = {
+      itemId: this.selectedSide.id,
+      tempId: '', // CartService will generate a temporary ID
+      name: this.selectedSide.name,
+      type: 'side',
+      quantity: this.quantity,
+      selectedSize: this.selectedSize,
+      unitPrice: this.unitPrice,
+      totalPrice: this.subtotal
+    };
+
+    this.cartService.addToCart(cartItem);
+    alert(`Added ${this.quantity} x ${this.selectedSide.name} to cart!`);
+    this.router.navigate(['/cart']);
   }
 
   resetForm() {

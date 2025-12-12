@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../cart';
+import { CartItem } from '../../models/menu.model';
 
 interface PizzaOption {
   id: string;
@@ -84,8 +85,21 @@ export class CustomizePizza implements OnInit {
   }
 
   addToCart() {
-    // Add to cart logic here
-    alert(`Added ${this.quantity} ${this.selectedPizza.name} to cart!`);
+    const cartItem: CartItem = {
+      itemId: this.selectedPizza.id,
+      tempId: '', // CartService will generate a temporary and unique ID
+      name: this.selectedPizza.name,
+      type: 'pizza',
+      quantity: this.quantity,
+      selectedSize: this.selectedSize,
+      selectedCrust: this.selectedCrust,
+      unitPrice: this.unitPrice,
+      totalPrice: this.subtotal
+    };
+
+    this.cartService.addToCart(cartItem);
+    alert(`Added ${this.quantity} x ${this.selectedPizza.name} to cart!`);
+    this.router.navigate(['/cart']);
   }
 
   resetForm() {
