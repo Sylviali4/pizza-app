@@ -40,6 +40,7 @@ export class CustomizePizza implements OnInit {
   ];
 
   selectedPizza: PizzaOption = this.pizzaOptions[0];
+  selectedPizzaId: string = this.pizzaOptions[0].id;
   selectedSize: string = 'small';
   selectedCrust: string = 'regular';
   quantity: number = 1;
@@ -62,6 +63,7 @@ export class CustomizePizza implements OnInit {
       const pizza = this.pizzaOptions.find(p => p.id === pizzaId);
       if (pizza) {
         this.selectedPizza = pizza;
+        this.selectedPizzaId = pizza.id;
       }
     }
   }
@@ -76,9 +78,8 @@ export class CustomizePizza implements OnInit {
     return this.unitPrice * this.quantity;
   }
 
-  onPizzaChange(event: Event) {
-    const select = event.target as HTMLSelectElement;
-    const pizza = this.pizzaOptions.find(p => p.id === select.value);
+  onPizzaChange() {
+    const pizza = this.pizzaOptions.find(p => p.id === this.selectedPizzaId);
     if (pizza) {
       this.selectedPizza = pizza;
     }

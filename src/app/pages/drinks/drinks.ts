@@ -9,6 +9,7 @@ interface DrinkOption {
   id: string;
   name: string;
   basePrice: number;
+  image: string;
 }
 
 @Component({
@@ -22,12 +23,12 @@ export class Drinks {
   public cartService = inject(CartService);
 
   drinkOptions: DrinkOption[] = [
-    { id: 'coca-cola', name: 'Coca-Cola Classic', basePrice: 2.50 },
-    { id: 'sprite', name: 'Sprite', basePrice: 2.50 },
-    { id: 'pepsi', name: 'Pepsi', basePrice: 2.50 },
-    { id: 'diet-coke', name: 'Diet Coke', basePrice: 2.50 },
-    { id: 'mountain-dew', name: 'Mountain Dew', basePrice: 2.50 },
-    { id: 'dr-pepper', name: 'Dr Pepper', basePrice: 2.50 }
+    { id: 'coca-cola', name: 'Coca-Cola Classic', basePrice: 2.50, image: '/images/cocacola.jpg' },
+    { id: 'sprite', name: 'Sprite', basePrice: 2.50, image: '/images/sprite.jpg' },
+    { id: 'pepsi', name: 'Pepsi', basePrice: 2.50, image: '/images/pepsi.jpg' },
+    { id: 'diet-coke', name: 'Diet Coke', basePrice: 2.50, image: '/images/diet_coke.jpg' },
+    { id: 'mountain-dew', name: 'Mountain Dew', basePrice: 2.50, image: '/images/mountian_dew.jpg' },
+    { id: 'dr-pepper', name: 'Dr Pepper', basePrice: 2.50, image: '/images/dr_pepper.jpg' }
   ];
 
   selectedDrink: DrinkOption = this.drinkOptions[0];

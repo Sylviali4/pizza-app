@@ -11,7 +11,7 @@
       <form class="builder-form">
         <div class="form-group">
           <label for="pizza">Pizza Type:</label>
-          <select id="pizza" [(ngModel)]="selectedPizza.id" (change)="onPizzaChange($event)" name="pizzaType">
+          <select id="pizza" [(ngModel)]="selectedPizzaId" (ngModelChange)="onPizzaChange()" name="pizzaType">
             @for (pizza of pizzaOptions; track pizza.id) {
               <option [value]="pizza.id">
                 {{ pizza.name }}
