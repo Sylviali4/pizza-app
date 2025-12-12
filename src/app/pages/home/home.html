@@ -2,11 +2,10 @@
 <div class="home-layout">
   <!-- Left side - More Flavors -->
   <aside class="side-options left-side">
-    <p class="side-label">more flavor</p>
     <div class="flavor-circles">
       <div class="small-pizza-wheel" *ngFor="let pizza of smallPizzas.slice(0, 2)">
-        <button *ngFor="let slice of pizza.slices" 
-                class="mini-slice mini-{{slice.position}}" 
+        <button *ngFor="let slice of pizza.slices"
+                class="mini-slice mini-{{slice.position}}"
                 [style.background-image]="'url(' + slice.image + ')'"
                 (click)="selectSlice(slice)"></button>
         <span class="circle-label">{{ pizza.name }}</span>
@@ -18,33 +17,30 @@
   <main class="wheel-landing">
     <div class="wheel" role="group" aria-label="Pizza types">
       <!-- 4 slices pizza with different background images -->
-      <button class="slice tl" 
-              (click)="selectMainFlavor(mainFlavors[0])" 
+      <button class="slice tl"
+              (click)="selectMainFlavor(mainFlavors[0])"
               [attr.aria-label]="'Choose ' + mainFlavors[0].name">
         <span class="slice-label">{{ mainFlavors[0].name }}</span>
       </button>
-      
-      <button class="slice tr" 
-              (click)="selectMainFlavor(mainFlavors[1])" 
+
+      <button class="slice tr"
+              (click)="selectMainFlavor(mainFlavors[1])"
               [attr.aria-label]="'Choose ' + mainFlavors[1].name">
         <span class="slice-label">{{ mainFlavors[1].name }}</span>
       </button>
-      
-      <button class="slice bl" 
-              (click)="selectMainFlavor(mainFlavors[2])" 
+
+      <button class="slice bl"
+              (click)="selectMainFlavor(mainFlavors[2])"
               [attr.aria-label]="'Choose ' + mainFlavors[2].name">
         <span class="slice-label">{{ mainFlavors[2].name }}</span>
       </button>
-      
-      <button class="slice br" 
-              (click)="selectMainFlavor(mainFlavors[3])" 
+
+      <button class="slice br"
+              (click)="selectMainFlavor(mainFlavors[3])"
               [attr.aria-label]="'Choose ' + mainFlavors[3].name">
         <span class="slice-label">{{ mainFlavors[3].name }}</span>
       </button>
-      
-      <p class="wheel-hint">for every picture on this page hover will become larger,<br>
-      so user knows it is clickable, when click you will go to<br>
-      customization pizza/side/drink page</p>
+
     </div>
   </main>
 
@@ -57,7 +53,7 @@
         <span class="option-sublabel">choose sides</span>
       </div>
     </button>
-    
+
     <button class="menu-option" (click)="goToDrinks()" aria-label="Choose Drinks">
       <div class="option-icon">🥤</div>
       <div class="option-text">
@@ -70,11 +66,11 @@
 
 <!-- Bottom - More Flavors -->
 <div class="bottom-flavors">
-  <p class="side-label">more flavor</p>
+  <!-- <p class="side-label">more flavor</p> -->
   <div class="flavor-circles-bottom">
     <div class="small-pizza-wheel" *ngFor="let pizza of smallPizzas.slice(2, 4)">
-      <button *ngFor="let slice of pizza.slices" 
-              class="mini-slice mini-{{slice.position}}" 
+      <button *ngFor="let slice of pizza.slices"
+              class="mini-slice mini-{{slice.position}}"
               [style.background-image]="'url(' + slice.image + ')'"
               (click)="selectSlice(slice)"></button>
       <span class="circle-label">{{ pizza.name }}</span>

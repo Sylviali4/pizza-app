@@ -21,7 +21,7 @@ export class Home {
   smallPizzas = [
     {
       id: 'pizza1',
-      name: 'Cheese',
+      // name: 'Cheese',
       slices: [
         { position: 'tl', image: '/images/bacon_lettecs.jpg', flavorId: 'bacon_lettuce' },
         { position: 'tr', image: '/images/chicken_ranch.jpg', flavorId: 'chicken_ranch' },
@@ -31,7 +31,7 @@ export class Home {
     },
     {
       id: 'pizza2',
-      name: 'Veggie',
+      // name: 'Veggie',
       slices: [
         { position: 'tl', image: '/images/cheese_pizza.jpg', flavorId: 'cheese' },
         { position: 'tr', image: '/images/steak.jpg', flavorId: 'steak' },

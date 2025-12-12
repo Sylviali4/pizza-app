@@ -11,7 +11,7 @@ import { take } from 'rxjs'; // 导入 take 操作符
   selector: 'app-cart-page',
   standalone: true,
   // 导入所需的模块和组件
-  imports: [CommonModule, ConfirmOrderModal, CurrencyPipe, DecimalPipe],
+  imports: [CommonModule, ConfirmOrderModal, DecimalPipe],
   templateUrl: './cart-page.html',
   styleUrl: './cart-page.scss'
 })
