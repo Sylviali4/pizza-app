@@ -3,13 +3,16 @@
   <!-- Left side - More Flavors -->
   <aside class="side-options left-side">
     <div class="flavor-circles">
-      <div class="small-pizza-wheel" *ngFor="let pizza of smallPizzas.slice(0, 2)">
-        <button *ngFor="let slice of pizza.slices"
-                class="mini-slice mini-{{slice.position}}"
-                [style.background-image]="'url(' + slice.image + ')'"
-                (click)="selectSlice(slice)"></button>
-        <span class="circle-label">{{ pizza.name }}</span>
-      </div>
+      @for (pizza of smallPizzas.slice(0, 2); track pizza.name) {
+        <div class="small-pizza-wheel">
+          @for (slice of pizza.slices; track slice.position) {
+            <button class="mini-slice mini-{{slice.position}}"
+                    [style.background-image]="'url(' + slice.image + ')'"
+                    (click)="selectSlice(slice)"></button>
+          }
+          <span class="circle-label">{{ pizza.name }}</span>
+        </div>
+      }
     </div>
   </aside>
 
@@ -68,12 +71,15 @@
 <div class="bottom-flavors">
   <!-- <p class="side-label">more flavor</p> -->
   <div class="flavor-circles-bottom">
-    <div class="small-pizza-wheel" *ngFor="let pizza of smallPizzas.slice(2, 4)">
-      <button *ngFor="let slice of pizza.slices"
-              class="mini-slice mini-{{slice.position}}"
-              [style.background-image]="'url(' + slice.image + ')'"
-              (click)="selectSlice(slice)"></button>
-      <span class="circle-label">{{ pizza.name }}</span>
-    </div>
+    @for (pizza of smallPizzas.slice(2, 4); track pizza.name) {
+      <div class="small-pizza-wheel">
+        @for (slice of pizza.slices; track slice.position) {
+          <button class="mini-slice mini-{{slice.position}}"
+                  [style.background-image]="'url(' + slice.image + ')'"
+                  (click)="selectSlice(slice)"></button>
+        }
+        <span class="circle-label">{{ pizza.name }}</span>
+      </div>
+    }
   </div>
 </div>
