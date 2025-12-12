@@ -48,6 +48,7 @@ export interface CartItem {
   selectedCrust?: string;  // 仅 Pizza 需要
   unitPrice: number;     // 该定制项的最终单价
   totalPrice: number;    // 单价 * 数量
+  image?: string;        // 商品图片路径
 }
 
 // 订单模型的结构 (用于提交到 Firestore)

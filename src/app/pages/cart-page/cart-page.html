@@ -15,7 +15,9 @@
         @for (item of items; track item.tempId) {
           <div class="cart-item">
             <div class="item-details">
-              <img src="assets/images/{{ item.type }}_icon.png" alt="{{ item.name }}" class="item-image">
+              <img [src]="item.image || 'assets/images/' + item.type + '_icon.png'"
+                   [alt]="item.name"
+                   class="item-image">
               <div class="item-description">
                 <p class="item-name">{{ item.quantity }} x {{ item.name }}</p>
                 <p class="item-options">

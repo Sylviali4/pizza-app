@@ -9,6 +9,7 @@ interface SideOption {
   id: string;
   name: string;
   basePrice: number;
+  image: string;
 }
 
 @Component({
@@ -22,9 +23,9 @@ export class Sides {
   public cartService = inject(CartService);
 
   sideOptions: SideOption[] = [
-    { id: 'garlic-bread', name: 'garlic bread', basePrice: 5.00 },
-    { id: 'caesar-salad', name: 'Caesar salad', basePrice: 6.00 },
-    { id: 'chicken-wings', name: 'chicken wings', basePrice: 8.00 }
+    { id: 'garlic-bread', name: 'garlic bread', basePrice: 5.00, image: '/images/garlic_bread.jpg' },
+    { id: 'caesar-salad', name: 'Caesar salad', basePrice: 6.00, image: '/images/caesar_salad.jpg' },
+    { id: 'chicken-wings', name: 'chicken wings', basePrice: 8.00, image: '/images/chicken_wings.jpg' }
   ];
 
   selectedSide: SideOption = this.sideOptions[0];
@@ -55,7 +56,8 @@ export class Sides {
       quantity: this.quantity,
       selectedSize: this.selectedSize,
       unitPrice: this.unitPrice,
-      totalPrice: this.subtotal
+      totalPrice: this.subtotal,
+      image: this.selectedSide.image
     };
 
     this.cartService.addToCart(cartItem);
