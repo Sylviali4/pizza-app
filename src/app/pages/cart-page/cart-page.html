@@ -1,2 +1,64 @@
 <!-- This is a cart page of the Pizza App -->
-<p>cart-page works!</p>
+<div class="cart-container">
+  <h2>Your Cart</h2>
+
+  @if (cartItems$ | async; as items) {
+
+    @if (items.length === 0) {
+      <div class="empty-cart-message">
+        <p>Your cart is empty. Let's get some pizza! 🍕</p>
+        <button (click)="goToHome()">Go to Menu</button>
+      </div>
+    } @else {
+
+      <div class="cart-items-list">
+        @for (item of items; track item.tempId) {
+          <div class="cart-item">
+            <div class="item-details">
+              <img src="assets/images/{{ item.type }}_icon.png" alt="{{ item.name }}" class="item-image">
+              <div class="item-description">
+                <p class="item-name">{{ item.quantity }} x {{ item.name }}</p>
+                <p class="item-options">
+                  ({{ item.selectedSize }}
+                  @if (item.selectedCrust) {
+                    , {{ item.selectedCrust }} crust
+                  }
+                  @if (item.selectedFlavor) {
+                    , {{ item.selectedFlavor }}
+                  }
+                  )
+                </p>
+              </div>
+            </div>
+
+            <div class="item-controls">
+              <span class="item-price">${{ item.totalPrice | number:'1.2-2' }}</span>
+              <button class="remove-button" (click)="removeItem(item.tempId)">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="cart-summary">
+        <div class="total-row">
+          <span class="total-label">Total:</span>
+          <span class="total-amount">${{ totalPrice$ | async | number:'1.2-2' }}</span>
+        </div>
+
+        <div class="action-buttons">
+          <button class="clear-button" (click)="clearCart()">Clear Cart</button>
+          <button class="checkout-button" (click)="openCheckoutModal()">Checkout</button>
+        </div>
+      </div>
+    }
+  }
+</div>
+
+@if (isModalOpen) {
+  <app-confirm-order-modal
+    (confirm)="confirmOrder()"
+    (cancel)="cancelOrder()"
+  ></app-confirm-order-modal>
+}
