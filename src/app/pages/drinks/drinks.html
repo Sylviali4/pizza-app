@@ -17,29 +17,32 @@
       <form class="builder-form">
         <!-- Drink Type Selection -->
         <div class="drink-types">
-          <button 
-            type="button"
-            *ngFor="let drink of drinkOptions" 
-            class="drink-btn"
-            [class.selected]="selectedDrink.id === drink.id"
-            (click)="selectedDrink = drink">
-            {{ drink.name }}
-          </button>
+          @for (drink of drinkOptions; track drink.id) {
+            <button 
+              type="button"
+              class="drink-btn"
+              [class.selected]="selectedDrink.id === drink.id"
+              (click)="selectedDrink = drink">
+              {{ drink.name }}
+            </button>
+          }
         </div>
 
         <!-- Size Selection -->
         <fieldset class="form-group">
           <legend>Size</legend>
           <div class="radio-group">
-            <label *ngFor="let size of sizeOptions">
-              <input 
-                type="radio" 
-                name="size" 
-                [value]="size.value" 
-                [(ngModel)]="selectedSize"
-              />
-              {{ size.label }}
-            </label>
+            @for (size of sizeOptions; track size.value) {
+              <label>
+                <input 
+                  type="radio" 
+                  name="size" 
+                  [value]="size.value" 
+                  [(ngModel)]="selectedSize"
+                />
+                {{ size.label }}
+              </label>
+            }
           </div>
         </fieldset>
 
